@@ -1,0 +1,27 @@
+import java.util.*;
+
+public class PhoneDirectory {
+    public static void main(String[] args) {
+        Map<String, String> phoneBook = new HashMap<>();
+        Scanner sc = new Scanner(System.in);
+
+        phoneBook.put("Vijay", "9876543210");
+        phoneBook.put("Varma", "9123456780");
+        phoneBook.put("Venu", "9012345678");
+        phoneBook.put("Venky", "9988776655");
+
+        String searchName = "Vijay";
+        if (phoneBook.containsKey(searchName)) {
+            System.out.println("Found: " + searchName + " -> " + phoneBook.get(searchName));
+        } else {
+            System.out.println(searchName + " not found");
+        }
+
+        String removeName = "Varma";
+        phoneBook.remove(removeName);
+
+        for (Map.Entry<String, String> entry : phoneBook.entrySet()) {
+            System.out.println(entry.getKey() + " : " + entry.getValue());
+        }
+    }
+}

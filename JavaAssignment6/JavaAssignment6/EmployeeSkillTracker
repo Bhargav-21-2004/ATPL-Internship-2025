@@ -1,0 +1,25 @@
+import java.util.*;
+
+public class EmployeeSkillTracker {
+    public static void main(String[] args) {
+        Map<String, Set<String> employeeSkills = new HashMap<>();
+        employeeSkills.put("Bhargav", new HashSet<>(Arrays.asList("Java", "Python", "SQL")));
+        employeeSkills.put("Adhitya", new HashSet<>(Arrays.asList("Python", "C++", "AWS")));
+        employeeSkills.put("Shyam", new HashSet<>(Arrays.asList("Java", "AWS", "Docker")));
+
+        String skillToSearch = "Python";
+        System.out.println("Employees with skill " + skillToSearch + ":");
+
+        for (Map.Entry<String, Set<String>> entry : employeeSkills.entrySet()) {
+            if (entry.getValue().contains(skillToSearch)) {
+                System.out.println(entry.getKey());
+            }
+        }
+
+        String emp1 = "Bhargav";
+        String emp2 = "Adhitya";
+        Set<String> commonSkills = new HashSet<>(employeeSkills.get(emp1));
+        commonSkills.retainAll(employeeSkills.get(emp2));
+        System.out.println("Common skills between " + emp1 + " and " + emp2 + ": " + commonSkills);
+    }
+}

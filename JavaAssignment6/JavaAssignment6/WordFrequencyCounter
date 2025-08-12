@@ -1,0 +1,18 @@
+import java.util.*;
+
+public class WordFrequencyCounter {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        String paragraph = sc.nextLine().toLowerCase();
+        String[] words = paragraph.split("\\s+");
+
+        Map<String, Integer> wordCount = new HashMap<>();
+        for (String word : words) {
+            wordCount.put(word, wordCount.getOrDefault(word, 0) + 1);
+        }
+
+        for (Map.Entry<String, Integer> entry : wordCount.entrySet()) {
+            System.out.println(entry.getKey() + " : " + entry.getValue());
+        }
+    }
+}

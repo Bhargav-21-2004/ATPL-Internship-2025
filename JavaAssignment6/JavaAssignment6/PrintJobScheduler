@@ -1,0 +1,20 @@
+import java.util.LinkedList;
+import java.util.Queue;
+
+public class PrintJobScheduler {
+    public static void main(String[] args) {
+        Queue<String> printQueue = new LinkedList<>();
+        printQueue.add("Document1");
+        printQueue.add("Document2");
+        printQueue.add("Document3");
+        printQueue.add("Document4");
+        printQueue.add("Document5");
+
+        printQueue.poll();
+        printQueue.poll();
+
+        for (String doc : printQueue) {
+            System.out.println(doc);
+        }
+    }
+}

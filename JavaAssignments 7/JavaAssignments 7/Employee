@@ -1,0 +1,39 @@
+import java.util.*;
+
+class Employee {
+    int id;
+    String name;
+    double salary;
+
+    Employee(int id, String name, double salary) {
+        this.id = id;
+        this.name = name;
+        this.salary = salary;
+    }
+
+    public String toString() {
+        return id + " " + name + " " + salary;
+    }
+}
+
+public class RemoveLowSalaryEmployees {
+    public static void main(String[] args) {
+        List<Employee> employees = new ArrayList<>();
+        employees.add(new Employee(1, "Venky", 25000));
+        employees.add(new Employee(2, "Ravi", 32000));
+        employees.add(new Employee(3, "Chandra", 28000));
+        employees.add(new Employee(4, "Adhitya", 40000));
+        employees.add(new Employee(5, "Surya", 35000));
+
+        Iterator<Employee> iterator = employees.iterator();
+        while (iterator.hasNext()) {
+            if (iterator.next().salary < 30000) {
+                iterator.remove();
+            }
+        }
+
+        for (Employee e : employees) {
+            System.out.println(e);
+        }
+    }
+}

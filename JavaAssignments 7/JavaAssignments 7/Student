@@ -1,0 +1,82 @@
+import java.util.*;
+
+class Student {
+    int id;
+    String name;
+    int age;
+    int marks;
+
+    Student(int id, String name, int age, int marks) {
+        this.id = id;
+        this.name = name;
+        this.age = age;
+        this.marks = marks;
+    }
+
+    public String toString() {
+        return id + " " + name + " " + age + " " + marks;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public int getMarks() {
+        return marks;
+    }
+}
+
+class NameComparator implements Comparator<Student> {
+    public int compare(Student s1, Student s2) {
+        return s1.name.compareTo(s2.name);
+    }
+}
+
+class MarksDescendingComparator implements Comparator<Student> {
+    public int compare(Student s1, Student s2) {
+        return Integer.compare(s2.marks, s1.marks);
+    }
+}
+
+class AgeAscendingComparator implements Comparator<Student> {
+    public int compare(Student s1, Student s2) {
+        return Integer.compare(s1.age, s2.age);
+    }
+}
+
+public class StudentSortDemo {
+    public static void main(String[] args) {
+        List<Student> students = new ArrayList<>();
+        students.add(new Student(101, "Adhitya", 20, 85));
+        students.add(new Student(102, "Bhargav", 22, 92));
+        students.add(new Student(103, "Chandra", 21, 85));
+        students.add(new Student(104, "Dhanush", 23, 75));
+        students.add(new Student(105, "Venky", 20, 92));
+
+        System.out.println("Sorted by Name:");
+        students.sort(new NameComparator());
+        for (Student s : students) System.out.println(s);
+
+        System.out.println("\nSorted by Marks Descending:");
+        students.sort(new MarksDescendingComparator());
+        for (Student s : students) System.out.println(s);
+
+        System.out.println("\nSorted by Age Ascending:");
+        students.sort(new AgeAscendingComparator());
+        for (Student s : students) System.out.println(s);
+
+        System.out.println("\nSorted by Marks Descending, then Name Ascending:");
+        students.sort(Comparator.comparing(Student::getMarks).reversed()
+                .thenComparing(Student::getName));
+        for (Student s : students) System.out.println(s);
+
+        System.out.println("\nSorting Integers in Descending Order using Anonymous Comparator:");
+        List<Integer> numbers = Arrays.asList(5, 2, 9, 1, 7);
+        numbers.sort(new Comparator<Integer>() {
+            public int compare(Integer a, Integer b) {
+                return b - a;
+            }
+        });
+        System.out.println(numbers);
+    }
+}

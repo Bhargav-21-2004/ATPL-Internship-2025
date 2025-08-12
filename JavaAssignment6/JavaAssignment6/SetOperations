@@ -1,0 +1,21 @@
+import java.util.*;
+
+public class SetOperations {
+    public static void main(String[] args) {
+        Set<Integer> set1 = new HashSet<>(Arrays.asList(10, 20, 30, 40, 50));
+        Set<Integer> set2 = new HashSet<>(Arrays.asList(30, 40, 50, 60, 70));
+
+        Set<Integer> intersection = new HashSet<>(set1);
+        intersection.retainAll(set2);
+
+        Set<Integer> union = new HashSet<>(set1);
+        union.addAll(set2);
+
+        Set<Integer> difference = new HashSet<>(set1);
+        difference.removeAll(set2);
+
+        System.out.println("Intersection: " + intersection);
+        System.out.println("Union: " + union);
+        System.out.println("Difference: " + difference);
+    }
+}

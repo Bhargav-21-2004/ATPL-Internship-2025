@@ -1,0 +1,18 @@
+public class WrapperConversion {
+    public static void main(String[] args) {
+        int i = 10;
+        double d = 3.14;
+        char c = 'A';
+        boolean b = true;
+
+        Integer intObj = Integer.valueOf(i);
+        Double doubleObj = Double.valueOf(d);
+        Character charObj = Character.valueOf(c);
+        Boolean boolObj = Boolean.valueOf(b);
+
+        System.out.println(intObj.getClass().getName());
+        System.out.println(doubleObj.getClass().getName());
+        System.out.println(charObj.getClass().getName());
+        System.out.println(boolObj.getClass().getName());
+    }
+}

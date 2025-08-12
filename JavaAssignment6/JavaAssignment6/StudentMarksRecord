@@ -1,0 +1,29 @@
+import java.util.*;
+
+public class StudentMarksRecord {
+    public static void main(String[] args) {
+        Map<String, Integer> studentMarks = new HashMap<>();
+        studentMarks.put("Raju", 85);
+        studentMarks.put("Ravi", 72);
+        studentMarks.put("Rakesh", 90);
+        studentMarks.put("Ramesh", 65);
+        studentMarks.put("Rajesh", 78);
+
+        String highestScorer = "", lowestScorer = "";
+        int highest = Integer.MIN_VALUE, lowest = Integer.MAX_VALUE;
+
+        for (Map.Entry<String, Integer> entry : studentMarks.entrySet()) {
+            if (entry.getValue() > highest) {
+                highest = entry.getValue();
+                highestScorer = entry.getKey();
+            }
+            if (entry.getValue() < lowest) {
+                lowest = entry.getValue();
+                lowestScorer = entry.getKey();
+            }
+        }
+
+        System.out.println("Highest: " + highestScorer + " -> " + highest);
+        System.out.println("Lowest: " + lowestScorer + " -> " + lowest);
+    }
+}

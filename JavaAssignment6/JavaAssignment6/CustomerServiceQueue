@@ -1,0 +1,34 @@
+import java.util.LinkedList;
+import java.util.Queue;
+
+public class CustomerServiceQueue {
+    private Queue<String> queue;
+
+    public CustomerServiceQueue() {
+        queue = new LinkedList<>();
+    }
+
+    public void addCustomer(String name) {
+        queue.add(name);
+    }
+
+    public String serveCustomer() {
+        return queue.poll();
+    }
+
+    public String peekNextCustomer() {
+        return queue.peek();
+    }
+
+    public static void main(String[] args) {
+        CustomerServiceQueue service = new CustomerServiceQueue();
+        service.addCustomer("Bhargav");
+        service.addCustomer("Surya");
+        service.addCustomer("Shyam");
+
+        System.out.println("Next: " + service.peekNextCustomer());
+        System.out.println("Served: " + service.serveCustomer());
+        System.out.println("Served: " + service.serveCustomer());
+        System.out.println("Next: " + service.peekNextCustomer());
+    }
+}

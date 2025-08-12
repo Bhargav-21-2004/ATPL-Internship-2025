@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="
+         http://www.springframework.org/schema/beans
+         https://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!--  <bean id="studentBean" class="com.example.iocdemo.Student">
+        <property name="name" value="Bhargav Sai"/>
+    </bean>
+
+    <bean id="collegeBean" class="com.example.iocdemo.College">
+        <property name="student" ref="studentBean"/>
+    </bean>  -->
+    
+    <!--  <bean id ="teacherBean" class ="com.example.lifecycle.Teacher" init-method ="initXml" destroy-method ="destroyXml"/>-->
+   
+   <!-- <bean id ="course" class ="com.example.constructorinjection.Course"> <constructor-arg value ="SpringFramework"/> </bean> -->
+   <!--   <bean id ="faculty" class ="com.example.constructorinjection.faculty"> <constructor-arg ref="course"/> </bean> -->
+  <!--  <bean id ="bookBean" class ="com.example.setterinjection.Book">  -->
+  <!--  <property name ="title" value ="Spring framework" /> </bean> -->
+   <!-- <bean id ="Librarybean" class ="com.example.setterinjection.Library" >  -->
+   <!-- <property name ="book" ref="bookBean"/></bean>  --> 
+   
+   
+    <bean id ="faculty" class ="com.example.multidependency.faculty"> <constructor-arg value="Andhra university"/> </bean>
+    <bean id ="library" class ="com.example.multidependency.Library">  <constructor-arg value ="Andhra university"/></bean>
+    <bean id ="University" class ="com.example.multidependency.University"> <constructor-arg ref="faculty"/> </bean>
+     <bean id ="University" class ="com.example.multidependency.University"> <constructor-arg ref="library"/> </bean>
+   
+   
+    <bean id ="facultybean" class ="com.example.multidependency.faculty" >
+   <property  name ="university" value ="Andhra University"/></bean>
+    <bean id ="Libararybean" class = "com.example.multidependency.Library">
+   <property name ="university" value ="Andhra University"/></bean>
+    <bean id ="Universitybean" class ="com.example.multidependency.University"> 
+   <property name ="Name" ref ="facultybean"/> </bean>
+   <bean id ="Universitybean" class ="com.example.multidependency.University"> 
+   <property name ="Name" ref ="Libararybean"/> </bean>
+   
+ 
+</beans>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
