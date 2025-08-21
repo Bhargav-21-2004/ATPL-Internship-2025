@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Hospital Patient Management System</title>
+</head>
+<body>
+
+<h1>Hospital Patient Management System</h1>
+
+<div>
+
+<button type="button" onclick="window.location.href='/patients'">View Patients </button> <br>
+<button type ="button" onclick="window.location.href='/patients/new'">Add Patient</button> <br>
+<button type="button" onclick="window.location.href='/patients/summary'">Summary Report</button>
+</div>
+
+<h2> Patient List</h2>
+<table border="1">
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Age</th>
+        <th>Doctor</th>
+        <th>Room No</th>
+        <th>Admission Date&Time</th>
+        <th>Status</th>
+        <th>Discharge Date&Time</th>
+        <th>Actions</th>
+    </tr>
+    <tr th:each="p : ${patients}">
+       <td th:text="${'PT' + T(java.lang.String).format('%04d', p.patientId)}"></td>
+        <td th:text="${p.name}"></td>
+        <td th:text="${p.age}"></td>
+        <td th:text="${p.doctorId}"></td>
+        <td th:text="${p.roomNumber}"></td>
+        <td th:text="${#temporals.format(p.admissionTimestamp, 'dd-MM-yyyy : HH:mm:ss')}"></td>        
+        <td th:text="${p.dischargeStatus ? 'Discharged' : 'Admitted'}"></td>
+        <td th:text="${#temporals.format(p.dischargeTimestamp, 'dd-MM-yyyy : HH:mm:ss')}"></td>
+        <td>
+            <button type="button"
+        th:onclick="'window.location.href= \'' + @{/patients/edit/{id}(id=${p.patientId})} + '\';'">Edit</button>
+        
+       <button type="button" th:onclick="'window.location.href= \'' + @{/patients/discharge/{id}(id=${p.patientId})} +'\';'">Discharge</button>
+       
+       
+       <button type="button" th:onclick="'window.location.href=\''+ @{/patients/delete/{id}(id=${p.patientId})}+'\';'">Delete</button>
+        </td>
+        
+       
+    </tr>
+</table>
+</body>
+</html>
+

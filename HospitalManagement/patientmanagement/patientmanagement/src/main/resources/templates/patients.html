@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Hospital Patient Management System</title>
+</head>
+<body>
+<h1>Hospital Patient Management System</h1>
+
+<button type="button" onclick="window.history.back()">Back</button>
+
+<form action="/patients/new" method="get">
+    <button type="submit">Add New Patient</button>
+</form>
+
+<hr/>
+
+<h2>Patients List</h2>
+
+
+<form th:action="@{/patients/search}" method="get">
+<input type="text" name="id" placeholder="Search Patient By ID" required />
+<button type="submit"> Find Patient</button>
+</form>
+<table border="1">
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Age</th>
+        <th>Doctor</th>
+        <th>Illness</th>
+        <th>Room No</th>
+        <th>Admission Date&Time</th>
+        <th>Status</th>
+        <th>Discharge Date&Time</th>
+        <th>Actions</th>
+    </tr>
+    <tr th:each="p : ${patients}">
+       <td th:text="${'PT' + T(java.lang.String).format('%04d', p.patientId)}"></td>
+        <td th:text="${p.name}"></td>
+        <td th:text="${p.age}"></td>
+        <td th:text="${p.doctorId}"></td>
+        <td th:text="${p.illnessDescription}"></td>
+        <td th:text="${p.roomNumber}"></td>
+        <td th:text="${#temporals.format(p.admissionTimestamp, 'dd-MM-yyyy : HH:mm:ss')}"></td>        
+        <td th:text="${p.dischargeStatus ? 'Discharged' : 'Admitted'}"></td>
+        <td th:text="${#temporals.format(p.dischargeTimestamp, 'dd-MM-yyyy : HH:mm:ss')}"></td>
+        <td>
+            <a th:href="@{/patients/edit/{id}(id=${p.patientId})}">Edit</a> |
+            <a th:href="@{/patients/discharge/{id}(id=${p.patientId})}" onclick="return confirm('Want to discharge the patient ?')">Discharge</a> |
+            <a th:href="@{/patients/delete/{id}(id=${p.patientId})}"
+               onclick="return confirm('Want to delete the patient ?')">Delete</a>
+        </td>
+        
+       
+    </tr>
+</table>
+</body>
+</html>

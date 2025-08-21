@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Patient Summary</title>
+</head>
+<body>
+    <h2>Patient Summary Report</h2>
+
+    <table border="1">
+        <tr>
+            <th>Status</th> <th>Count</th>
+        </tr>
+        <tr>
+            <td>Current Inpatients</td>
+            <td th:text="${inpatients}"></td>
+        </tr>
+        <tr>
+            <td>Discharged Patients</td>
+            <td th:text="${discharged}"></td>
+        </tr>
+    </table>
+    <br>
+    <button type="button" onclick="window.location.href='/patients'">BACK TO PATIENTS LIST</button>
+</body>
+</html>
+

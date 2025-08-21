@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Patient Form</title>
+</head>
+<body>
+
+<h2>Patient Form</h2>
+
+<form th:action="@{/patients/save}" th:object="${patient}" method="post">
+    <input type="hidden" th:field="*{patientId}" />
+
+    Name: <input type="text" th:field="*{name}" /><br>
+    Age: <input type="number" th:field="*{age}" /><br>
+    Gender: <input type="text" th:field="*{gender}" /><br>
+    Contact: <input type="text" th:field="*{contact}" /><br>
+    Illness: <input type="text" th:field="*{illnessDescription}" /><br>
+    Doctor ID: <input type="number" th:field="*{doctorId}" /><br>
+    Room: <input type="text" th:field="*{roomNumber}" /><br><br>
+
+    <button type="submit">Save</button>
+</form>
+
+<button type="button" onclick="window.location.href='/home'">Back to home </button>
+
+</body>
+</html>
+                                                                                                                                                                                                                                                                    
