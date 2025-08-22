@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table,tr,td,th{
+            border:1px solid black;
+        }
+    </style>
+</head>
+<body>
+    <h1> Enter Student Marks</h1>
+
+    <label for="marks">Select Student:</label>
+    <select id="marks" name="marks" >
+        <option value="select" selected disabled>--Select--</option>
+        <option value="Bhargav">Bhargav</option>
+        <option value="Shyam">Shyam</option>
+        <option value="Gnaneswar">Gnaneswar</option>
+        <option value="Adhitya"> Adhitya</option>
+    </select><br><br>
+    
+    <table style="border-collapse: collapse;">
+        <tr>
+            <th> <b>Subject</b></th>
+            <th><b>Marks (out of 100)</b></th>
+        </tr>
+        <tr>
+            <td>maths</td>
+            <td style="padding-right:50px;"><input style="width:80px;" type="number" id="maths" name="marks"> 
+        </tr>
+        <tr>
+            <td>Science</td>
+            <td><input style="width: 80px";number" id="Science" name="marks"> 
+        </tr>
+        <tr>
+            <td>English</td>
+            <td><input style="width: 80px;"number" id="English" name="marks"> 
+        </tr>
+        <tr>
+            <td>History</td>
+            <td><input style="width: 80px;"number" id="History" name="marks"> 
+        </tr>
+    </table><br>
+    <button type="submit">Submit</button>
+     
+</body>
+</html>
