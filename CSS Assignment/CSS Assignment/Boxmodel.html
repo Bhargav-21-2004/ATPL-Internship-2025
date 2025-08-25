@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Box Model Visualizer</title>
+  <style>
+    body {
+      background: #eee;
+      text-align: center;
+      padding: 20px;
+    }
+
+    h2 {
+      margin-top: 40px;
+    }
+
+    .box-wrapper {
+      display: flex;
+      justify-content: center;
+      gap: 60px;
+      margin-top: 40px;
+    }
+
+    .container {
+      background-color: rgb(173, 184, 248); 
+      padding: 20px;
+    }
+
+    .box {
+      width: 200px;
+      height: 100px;
+      padding: 20px;
+      border: 10px solid navy;
+      background-color: lightgreen;
+      color: #0c0606;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .content-box {
+      box-sizing: content-box;
+      color: black;
+    }
+
+    .border-box {
+      box-sizing: border-box;
+    }
+
+    
+  </style>
+</head>
+<body>
+
+  <h1>Box Model Visualizer</h1>
+
+  <div class="box-wrapper">
+        <div class="container">
+            <div class="box content-box">
+                <b>Content-Box</b>
+            </div>
+       
+    </div>
+
+    <div class="container">
+      <div class="box border-box">
+        <b>Border-Box</b>
+      </div>
+   
+    </div>
+  </div>
+
+</body>
+</html>
