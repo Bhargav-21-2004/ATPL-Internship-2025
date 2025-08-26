@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        .container{
+            display:grid;
+            grid-template-columns: repeat(4,1fr);
+            background-color: aliceblue;
+            padding:50px;
+            gap:10px;
+        }
+        .elements{
+            background-color: grey;
+            color:black;
+            padding:10px;
+            text-align: center;
+            
+        }
+        .first{
+            background-color: cadetblue;
+            grid-column: span 2;
+            text-align: center;
+            padding:10px;
+
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+    <div class="first">Featured Item</div>
+    <div class="elements">Item 1</div>
+    <div class="elements">Item 2</div>
+    <div class="elements">Item 3</div>
+    <div class="elements">Item 4</div>
+    </div>
+</body>
+</html>

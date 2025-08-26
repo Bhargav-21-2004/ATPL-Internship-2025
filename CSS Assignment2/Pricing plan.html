@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .plan{
+            margin: 30px ;
+            padding:20px 30px;
+            display: grid;
+            background-color: rgb(228, 236, 234);
+            grid-template-columns: repeat(3,1fr);
+            column-gap: 30px;
+        }
+        .PlanA{
+            padding:15px;
+            border: none;
+            margin:5px;
+            background-color:white;
+            text-align: center;
+
+        }
+        p{
+            color: blue;
+        }
+        button{
+            background-color:rgb(184, 131, 253);
+            border: none;
+            border-radius:2px;
+        }
+        button:hover{
+            background-color: blue;
+        }
+    </style>
+</head>
+<body>
+    <div class="plan">
+        <div class="PlanA"> 
+            <h4>Basic</h4>
+            <p><b>$19</b>/month</p>
+            <button type="button">Choose Plan</button>
+        </div>
+        <div class="PlanA">
+            <h4> Standard</h4>
+            <p><b>$39</b>/month</p>
+            <button type="button">Choose Plan</button>
+        </div>
+        <div class="PlanA">
+            <h4>Premium</h4>
+            <p><b>$79</b>/month</p>
+            <button type="button">Choose Plan</button>
+        </div>
+    </div>
+</body>
+</html>

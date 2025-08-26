@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Centered Login Form</title>
+    <style>
+        .container,html{
+            height:100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align:center;
+        }
+        .centeredform{
+            background-color: white;
+            padding:40px;
+            border: 1px solid black;
+            border-radius: 5px;    
+        }
+        button{
+            width:100%;
+            background-color: blue;
+            color:white;
+            border-radius:3px;
+            border:none;
+        }
+        button:hover{
+            background-color:grey;
+        }
+       
+    </style>
+</head>
+<body>
+    <form action="#" method="post">
+     <div class="container">
+        <div class="centeredform">
+        <h2 style="color: blue;">Login</h2>
+        <input type="text" placeholder="User Name"  name="uname" required><br><br>
+        <input type="password" placeholder="Password" name="upass" required><br><br>
+        <button type="submit" >Sign In</button>
+        </div>
+        
+    </div>
+        
+    </form>
+    
+</body>
+</html>
