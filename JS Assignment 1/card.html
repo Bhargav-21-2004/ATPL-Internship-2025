@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Basic Card Layout</title>
+  <style>
+    body{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      font-family: Arial, sans-serif;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      min-height:100vh;
+      background:#f5f5f5;
+    }
+    .container{
+      display:grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap:20px;
+      width:80%;
+      max-width:800px;
+    }
+    .card{
+      background:rgb(183, 125, 19);
+      padding:20px;
+      border-radius:10px;
+      box-shadow:0 4px 10px rgba(0,0,0,0.1);
+      text-align:center;
+      transition: transform 0.2s ease;
+    }
+    .card:hover{
+      transform: scale(1.05);
+    }
+    .card h3{
+      margin:0;
+      color:#130505;
+    }
+    .card p{
+      margin:10px 0 0;
+      color:#130505;
+    }
+  </style>
+</head>
+<body>
+  <div class="container" id="userCards"></div>
+
+  <script>
+    const users = [
+      { name: "bhargav", age: 22 },
+      { name: "Adhitya", age: 25 },
+      { name: "Shyam", age: 28 }
+    ];
+
+    const container = document.getElementById("userCards");
+
+    users.forEach(user => {
+      let card = document.createElement("div");
+      card.className = "card";
+      card.innerHTML = `<h3>${user.name}</h3><p>Age: ${user.age}</p>`;
+      container.appendChild(card);
+    });
+  </script>
+</body>
+</html>

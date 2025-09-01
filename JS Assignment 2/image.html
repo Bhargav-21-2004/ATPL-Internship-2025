@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Image Slider / Carousel</title>
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f0f0f0;
+    }
+    .container {
+      background: black;
+      padding: 30px;
+      border-radius: 12px;
+      text-align: center;
+      color: white;
+      width: 400px;
+    }
+    img {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+      border-radius: 10px;
+    }
+    .controls {
+      margin-top: 15px;
+    }
+    button {
+      font-size: 16px;
+      padding: 10px 20px;
+      margin: 10px;
+      background-color: rgba(172, 152, 157, 0.895);
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: rgb(72, 169, 23);
+    }
+  </style>
+</head>
+<body>
+  <div class="container" id="sliderContainer">
+    <h2>Image Slider</h2>
+    <img id="sliderImage" src="https://picsum.photos/id/1015/600/400" alt="slider image">
+    <div class="controls">
+      <button onclick="prevImage()">Prev</button>
+      <button onclick="nextImage()">Next</button>
+    </div>
+  </div>
+
+  <script>
+    const images = [
+      "https://picsum.photos/id/1015/600/400",
+      "https://picsum.photos/id/1025/600/400",
+      "https://picsum.photos/id/1035/600/400",
+      "https://picsum.photos/id/1045/600/400",
+      "https://picsum.photos/id/1055/600/400"
+    ];
+
+    let index = 0;
+    let slider = document.getElementById("sliderImage");
+    let container = document.getElementById("sliderContainer");
+    let interval;
+
+    function showImage(i) {
+      index = (i + images.length) % images.length; 
+      slider.src = images[index];
+    }
+
+    function nextImage() {
+      showImage(index + 1);
+    }
+
+    function prevImage() {
+      showImage(index - 1);
+    }
+
+    function startAutoPlay() {
+      interval = setInterval(nextImage, 2000); 
+    }
+
+    function stopAutoPlay() {
+      clearInterval(interval);
+    }
+    startAutoPlay();
+    container.addEventListener("mouseenter", stopAutoPlay);
+    container.addEventListener("mouseleave", startAutoPlay);
+  </script>
+</body>
+</html>

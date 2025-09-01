@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Random Quote Generator</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 50px;
+       display:flex;
+      text-align: center;
+      justify-content: center;
+    }
+    #quote {
+      font-size: 24px;
+      margin: 20px;
+      color:rgb(61, 166, 34);
+    }
+    button {
+      font-size: 16px;
+      padding: 10px 20px;
+       border-radius:5px;
+    }
+    .container{
+      background-color: rgba(5, 7, 104, 0.884);
+      color:white;
+      padding:20px;
+      margin:10px;
+      width:fit-content;
+      display:flex;
+      text-align: center;
+      justify-content: center;
+      border-radius:10px;
+    }
+    
+  </style>
+</head>
+<body>
+<div class="container">
+  <div class="quotecontainer">
+  <h1>Random Quote Generator</h1>
+  <div id="quote"></div>
+  <button onclick="generateQuote()">New Quote</button>
+  </div>
+</div>
+  <script>
+
+    const quotes = [
+  "Dream big and dare to fail.",
+  "Hard work beats talent when talent doesn’t work hard.",
+  "Push yourself, because no one else will do it for you.",
+  "Great things never come from comfort zones.",
+  "Success doesn’t come to you, you go to it.",
+  "The harder you work for something, the greater you’ll feel when you achieve it.",
+  "Your only limit is your mind."
+];
+
+
+    function generateQuote() {
+      const randomIndex = Math.floor(Math.random() * quotes.length);
+      const randomQuote = quotes[randomIndex];
+      document.getElementById("quote").textContent = randomQuote;
+    }
+  </script>
+
+</body>
+</html>

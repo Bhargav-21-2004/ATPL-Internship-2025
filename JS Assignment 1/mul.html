@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Multiplication Table</title>
+  <style>
+body{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  display:flex;
+  align-items: center;
+  justify-content: center;
+  height:100vh;
+
+}
+.multable{
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width:fit-content;
+  background-color: rgb(16, 5, 74);
+  padding:15px;
+  margin:10px;
+  border-radius: 10px;
+
+}
+.multable h2{
+  background-color: lightgray;
+  padding:10px;
+  border-radius: 5px;
+}
+.multable button{
+  background-color: rgb(30, 165, 183);
+  color:white;
+  border-radius: 5px;
+
+}
+.multable .tab{
+  background-color: rgb(182, 157, 157);
+  color:white;
+  
+}
+
+.multable{
+  padding:5px;
+}
+  </style>
+</head>
+<body>
+<div class="multable">
+  <h2>Multiplication Table Generator</h2>
+
+  <input id="num" type="number" placeholder="Enter a number"><br>
+  <button onclick="showTable()" >Show Table</button><br>
+<div class="tab"><p id="result"></p></div>
+  
+</div>
+  <script>
+    function showTable() {
+      let number = Number(document.getElementById("num").value);
+      let text = "";
+
+      for (let index = 1; index <= 10; index++) {
+        text += number + " x " + index + " = " + (number * index) + "<br>";
+      }
+
+      document.getElementById("result").innerHTML = text;
+      document.getElementById("result").style.padding="6px";
+    }
+  </script>
+
+</body>
+</html>

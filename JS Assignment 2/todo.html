@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>To-Do List</title>
+  <style>
+    *{
+        box-sizing:border-box
+    }
+    body
+    {
+        font-family:Arial;
+        margin:0;display:flex;
+        align-items:center;
+        justify-content:center;
+        height:100vh;
+        background:#f7f9fc
+    }
+    .wrap
+    {
+        background:#fff;
+        padding:20px;
+        border-radius:12px;
+        box-shadow:0 8px 24px rgba(15,23,42,.08);
+        width:360px
+    }
+    h3
+    {
+        margin:0 0 12px
+    }
+    .add
+    {
+        display:flex;
+        gap:8px
+    }
+    input
+    {
+        flex:1;
+        padding:10px;
+        border-radius:8px;
+        border:1px solid #e3e8ef
+    }
+    button
+    {
+        padding:10px;
+        border-radius:8px;
+        border:none;
+        background:#0ea5a4;
+        color:#fff;
+        cursor:pointer}
+    ul
+    {
+        list-style:none;
+        padding:0;
+        margin:12px 0 0;
+        max-height:300px;
+        overflow:auto}
+    li
+    {
+        display:flex;
+        align-items:center;
+        justify-content:space-between;
+        padding:8px 10px;
+        border-bottom:1px solid #f0f3f7}
+    .left
+    {
+        display:flex;
+        align-items:center;
+        gap:10px
+    }
+    .done
+    {
+        text-decoration:line-through;
+        color:#8892a6
+    }
+    .small
+    {
+        font-size:13px;
+        color:#6b7280
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <h3>My To-Do</h3>
+    <div class="add">
+      <input id="taskInput" placeholder="Add a task">
+      <button id="addBtn">Add</button>
+    </div>
+    <ul id="list"></ul>
+    <div style="margin-top:10px;display:flex;gap:8px">
+      <button id="clearCompleted" style="flex:1;background:#ef4444">Clear Completed</button>
+      <button id="clearAll" style="flex:1;background:#374151">Clear All</button>
+    </div>
+  </div>
+
+  <script>
+    const input = document.getElementById('taskInput');
+    const addBtn = document.getElementById('addBtn');
+    const list = document.getElementById('list');
+    const clearCompleted = document.getElementById('clearCompleted');
+    const clearAll = document.getElementById('clearAll');
+
+    function load(){
+      const data = JSON.parse(localStorage.getItem('todos')||'[]');
+      render(data);
+    }
+    function save(items){ localStorage.setItem('todos', JSON.stringify(items)); }
+    function render(items){
+      list.innerHTML = '';
+      items.forEach((t, i) => {
+        const li = document.createElement('li');
+        const left = document.createElement('div');
+        left.className = 'left';
+        const chk = document.createElement('input');
+        chk.type = 'checkbox';
+        chk.checked = t.done;
+        const span = document.createElement('span');
+        span.textContent = t.text;
+        if(t.done) span.className = 'done';
+        left.appendChild(chk);
+        left.appendChild(span);
+        const del = document.createElement('button');
+        del.textContent = 'Delete';
+        del.style.background='transparent'; del.style.border='none'; del.style.color='#ef4444'; del.style.cursor='pointer';
+        li.appendChild(left);
+        li.appendChild(del);
+        list.appendChild(li);
+
+        chk.addEventListener('change', () => {
+          items[i].done = chk.checked;
+          save(items);
+          render(items);
+        });
+        del.addEventListener('click', () => {
+          items.splice(i,1);
+          save(items);
+          render(items);
+        });
+      });
+    }
+
+    addBtn.addEventListener('click', () => {
+      const txt = input.value.trim();
+      if(!txt) return;
+      const items = JSON.parse(localStorage.getItem('todos')||'[]');
+      items.push({text:txt, done:false});
+      save(items);
+      input.value = '';
+      render(items);
+    });
+
+    input.addEventListener('keydown', (e)=>{ if(e.key==='Enter') addBtn.click(); });
+
+    clearCompleted.addEventListener('click', ()=> {
+      const items = JSON.parse(localStorage.getItem('todos')||'[]').filter(t=>!t.done);
+      save(items); render(items);
+    });
+    clearAll.addEventListener('click', ()=> {
+      localStorage.removeItem('todos'); render([]);
+    });
+
+    load();
+  </script>
+</body>
+</html>

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Grade Calculator</title>
+  <style>
+    body{
+      padding:0;
+      margin:0;
+      box-sizing:border-box;
+      display:flex;
+      justify-content: center;
+      align-items: center;
+      height:100vh;
+      background:#f0f0f0;
+      font-family: Arial, sans-serif;
+    }
+    .grading{
+      background-color:lightseagreen;
+      display:flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding:30px;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    }
+    .grading input{
+      padding:8px;
+      border:none;
+      border-radius:5px;
+      margin:5px 0;
+      text-align:center;
+      width:150px;
+    }
+    .grading button{
+      background-color: mediumslateblue;
+      color:white;
+      border-radius: 6px;
+      border:none;
+      padding:10px 20px;
+      margin-top:10px;
+      cursor:pointer;
+      font-weight:bold;
+    }
+    .grading button:hover{
+      background-color: darkslateblue;
+    }
+    #output{
+      margin-top:15px;
+      font-size:18px;
+      font-weight:bold;
+      text-align:center;
+    }
+  </style>
+</head>
+<body>
+<div class="grading">
+  <h2>Grade Calculator</h2>
+  <input id="m1" type="number" placeholder="Subject 1">
+  <input id="m2" type="number" placeholder="Subject 2">
+  <input id="m3" type="number" placeholder="Subject 3">
+  <input id="m4" type="number" placeholder="Subject 4">
+  <input id="m5" type="number" placeholder="Subject 5">
+
+  <button onclick="gradeCal()">Calculate Grade</button>
+
+  <h3 id="output"></h3>
+</div>
+
+<script>
+  function gradeCal() {
+    let m1 = Number(document.getElementById("m1").value);
+    let m2 = Number(document.getElementById("m2").value);
+    let m3 = Number(document.getElementById("m3").value);
+    let m4 = Number(document.getElementById("m4").value);
+    let m5 = Number(document.getElementById("m5").value);
+
+    if([m1,m2,m3,m4,m5].some(isNaN)){
+      document.getElementById("output").style.color = "black";
+      document.getElementById("output").innerHTML = "⚠️ Please enter all marks!";
+      return;
+    }
+
+    let total = m1 + m2 + m3 + m4 + m5;
+    let average = total / 5;
+
+    let grade = "";
+    let color = "";
+
+    if (average >= 90) {
+      grade = "A";
+      color = "green";
+    } else if (average >= 75) {
+      grade = "B";
+      color = "blue";
+    } else if (average >= 60) {
+      grade = "C";
+      color = "orange";
+    } else if (average >= 40) {
+      grade = "D";
+      color = "brown";
+    } else {
+      grade = "F";
+      color = "red";
+    }
+
+    document.getElementById("output").style.color = color;
+    document.getElementById("output").innerHTML =
+      "Total: " + total + "<br>Average: " + average.toFixed(2) + "<br>Grade: " + grade;
+  }
+</script>
+</body>
+</html>
